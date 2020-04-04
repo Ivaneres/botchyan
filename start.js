@@ -1,4 +1,5 @@
 const log = require("./logging.js");
+const key = require("./key.json");
 const settings = require("./settings.json");
 const fs = require("fs");
 const utils = require("./util/roles.js");
@@ -333,4 +334,4 @@ client.on("guildMemberRemove", member => {
 });
 
 // login to Discord with your app's token
-client.login(settings.clientKey);
+client.login(key.key);
