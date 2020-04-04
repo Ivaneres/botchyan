@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-tmux kill-session -t homeland || true
-tmux new -d -s homeland './.circleci/start_bot.sh'
+tmux kill-session -t anime || true
+tmux new -d -s anime './.circleci/start_bot.sh'
