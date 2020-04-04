@@ -3,6 +3,7 @@ const key = require("./key.json");
 const settings = require("./settings.json");
 const fs = require("fs");
 const utils = require("./util/roles.js");
+const mascotBot = require("./mascotbot/initBot.js");
 
 String.prototype.capitaliseFirst = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
@@ -332,6 +333,13 @@ client.on("guildMemberRemove", member => {
 	delete stages[member.id];
 	fs.writeFileSync("./whois.json", JSON.stringify(whois, null, 4));
 });
+
+// Logs in all of the sub-bots using the initlialisation function in mascotbot/initBot.js
+if (key.mascotBots != null) {
+	for (const token of key.mascotBots) {
+		mascotBot.init(token);
+	}
+}
 
 // login to Discord with your app's token
 client.login(key.key);

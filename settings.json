@@ -1,8 +1,4 @@
 {
-    "mascotBots": {
-        "bot1": "123456789",
-        "bot2": "56098093539"
-    },
     "cmdkey": "!",
     "helloMessages": [
         "Hello, <user>! Please enter your university below (UCL/ICL/KCL/LSE/other)",
