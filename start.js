@@ -140,19 +140,19 @@ client.on('ready', async () => {
 	client.user.setActivity(`${settings.cmdkey}help`);
 	// Apparently the bot will lose its presence after a long perioud of time, so just set it once per hour
 	setInterval(() => {
-		client.user.setActivity(`${settings.cmdkey}help`);
+		client.user.setActivity(`${settings.cmdkey}help`).catch(err => log.logDate(err.name)).catch(err => log.logDate(`setActivity error: ${err.message}`));
 	}, 1000 * 60 * 60);
 
 	setInterval(() => {
-		updateStats();
+		updateStats().catch(err => log.logDate(`updateStats error: ${err.message}`));
 	}, 10000);
 });
 
 client.on("shardDisconnect", () => log.logDate("Shard disconnected :("));
-client.on("shardError", (e) => log.logDate(`Shard error: ${e.name}`));
+client.on("shardError", (e) => log.logDate(`Shard error: ${e.message}`));
 client.on("shardReconnecting", () => log.logDate(`Shard reconnecting...`));
 client.on("shardReady", () => log.logDate(`Shard ready`));
-client.on("error", (e) => log.logDate(`Error: ${e.name}`));
+client.on("error", (e) => log.logDate(`Error: ${e.message}`));
 
 client.on("message", async (message) => {
 	if (message.author.bot) return;
@@ -345,4 +345,4 @@ if (key.mascotBots != null) {
 }
 
 // login to Discord with your app's token
-client.login(key.key);
+client.login(key.key).catch(err => log.logDate(`Login error: ${err.message}`));
