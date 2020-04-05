@@ -148,7 +148,10 @@ client.on('ready', async () => {
 	}, 10000);
 });
 
-client.on("disconnect", () => log.logDate("Disconnected"));
+client.on("shardDisconnect", () => log.logDate("Shard disconnected :("));
+client.on("shardError", (e) => log.logDate(`Shard error: ${e.name}`));
+client.on("shardReconnecting", () => log.logDate(`Shard reconnecting...`));
+client.on("shardReady", () => log.logDate(`Shard ready`));
 client.on("error", (e) => log.logDate(`Error: ${e.name}`));
 
 client.on("message", async (message) => {
