@@ -98,7 +98,7 @@ async function updateStats() {
 	for (const channel of settings.statsChannels) {
 		const statsChannel = guild.channels.resolve(channel);
 		if (statsChannel == null) {
-			return log.logDate("Stats channel not found. Pls fix!");
+			return log.log("Stats channel not found. Pls fix!");
 		}
 	
 		const messages = await statsChannel.messages.fetch();
@@ -131,8 +131,10 @@ async function updateStats() {
 	}
 }
 
+log.insertBreak();
+
 client.on('ready', async () => {
-	log.logDate("Loaded!");
+	log.log("Loaded!");
 	const verifChannel = await client.channels.fetch(settings.verifChannel);
 	verifChannel.messages.fetch();
 	updateStats();
@@ -140,19 +142,19 @@ client.on('ready', async () => {
 	client.user.setActivity(`${settings.cmdkey}help`);
 	// Apparently the bot will lose its presence after a long perioud of time, so just set it once per hour
 	setInterval(() => {
-		client.user.setActivity(`${settings.cmdkey}help`).catch(err => log.logDate(err.name)).catch(err => log.logDate(`setActivity error: ${err.message}`));
+		client.user.setActivity(`${settings.cmdkey}help`).catch(err => log.log(err.name)).catch(err => log.log(`setActivity error: ${err.message}`));
 	}, 1000 * 60 * 60);
 
 	setInterval(() => {
-		updateStats().catch(err => log.logDate(`updateStats error: ${err.message}`));
+		updateStats().catch(err => log.log(`updateStats error: ${err.message}`));
 	}, 10000);
 });
 
-client.on("shardDisconnect", () => log.logDate("Shard disconnected :("));
-client.on("shardError", (e) => log.logDate(`Shard error: ${e.message}`));
-client.on("shardReconnecting", () => log.logDate(`Shard reconnecting...`));
-client.on("shardReady", () => log.logDate(`Shard ready`));
-client.on("error", (e) => log.logDate(`Error: ${e.message}`));
+client.on("shardDisconnect", () => log.log("Shard disconnected :("));
+client.on("shardError", (e) => log.log(`Shard error: ${e.message}`));
+client.on("shardReconnecting", () => log.log(`Shard reconnecting...`));
+client.on("shardReady", () => log.log(`Shard ready`));
+client.on("error", (e) => log.log(`Error: ${e.message}`));
 
 client.on("message", async (message) => {
 	if (message.author.bot) return;
@@ -242,14 +244,14 @@ client.on("message", async (message) => {
         let commandFile = require(`./commands/${command}.js`);
         if (!commandFile) return;
         commandFile.run(client, message, args, settings).then((success) => {
-            log.logDate(`${command}: ` + success);
+            log.log(`${command}: ` + success);
         }, (err) => {
-            log.logDate(`${command}: ` + err);
+            log.log(`${command}: ` + err);
         });
     } 
     catch (e) {
 		if (e.message.includes("Cannot find module './commands/")) return;
-        log.logDate(e);
+        log.log(e);
     }
 });
 
@@ -283,6 +285,7 @@ client.on("messageReactionAdd", async (r, user) => {
 	if (r.emoji.name === "❌") {
 		member.send(`You have been rejected.`);
 		confirm = await r.message.channel.send(`User ${member} rejected by ${user.username}. This message will be deleted shortly.`);
+		log.log(`User ${member.user.username} rejected by ${user.username}`);
 		whois[member.id].rejected = true;
 	}
 	else {
@@ -290,7 +293,7 @@ client.on("messageReactionAdd", async (r, user) => {
 		const role = await r.message.guild.roles.fetch(roleID);
 		if (role == null) {
 			r.message.channel.send(`Role for ${whois[member.id].university} is not set correctly.`);
-			return log.logDate(`Role for ${whois[member.id].university} does not exit. FIX NOW!`);
+			return log.log(`Role for ${whois[member.id].university} does not exit. FIX NOW!`);
 		}
 
 		member.roles.add(role);
@@ -298,7 +301,7 @@ client.on("messageReactionAdd", async (r, user) => {
 			const senpaiRole = r.message.guild.roles.get(settings.roles.senpai);
 			if (senpaiRole == null) {
 				r.message.channel.send(`Senpai role is not set correctly.`);
-				return log.logDate("Senpai role does not exist. FIX NOW!");
+				return log.log("Senpai role does not exist. FIX NOW!");
 			}
 			member.roles.add(senpaiRole);
 		}
@@ -306,6 +309,7 @@ client.on("messageReactionAdd", async (r, user) => {
 		delete whois[member.id].photo;
 		delete whois[member.id].number;
 		confirm = await r.message.channel.send(`User ${member} verified by ${user.username}! This message will be deleted shortly.`);
+		log.log(`User ${member.user.username} verified by ${user.username}`);
 		member.send(`You have been verified! You now have access to the server.`);
 	}
 
@@ -319,7 +323,8 @@ client.on("messageReactionAdd", async (r, user) => {
 });
 
 client.on("guildMemberAdd", async (member) => {
-	let dm = await member.createDM().catch(err => log.logDate(err));
+	log.log(`New user ${member.user.username} joining`);
+	let dm = await member.createDM().catch(err => log.log(err));
 	dm.send(settings.helloMessages[0].replace(/<user>/g, member.user.username));
 	const whois = JSON.parse(fs.readFileSync("./whois.json"));
 	stages[member.id] = 0;
@@ -330,6 +335,7 @@ client.on("guildMemberAdd", async (member) => {
 });
 
 client.on("guildMemberRemove", member => {
+	log.log(`User ${member.user.username} left`);
 	const whois = JSON.parse(fs.readFileSync("./whois.json"));
 	if (whois[member.id] == null) return;
 	delete whois[member.id];
@@ -345,4 +351,4 @@ if (key.mascotBots != null) {
 }
 
 // login to Discord with your app's token
-client.login(key.key).catch(err => log.logDate(`Login error: ${err.message}`));
+client.login(key.key).catch(err => log.log(`Login error: ${err.message}`));
