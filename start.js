@@ -91,6 +91,31 @@ function getID(mention) {
 }
 
 /**
+ * Generates a Discord embed containing server stats
+ * @returns {Discord.MessageEmbed}
+ */
+async function generateStatsEmbed() {
+	const roleStats = await utils.getRoleStats(client);
+	
+	let embed = new Discord.MessageEmbed()
+	.setTitle(settings.statsTitle)
+	.setColor(settings.uniColours.other);
+	let description = "";
+	for (const uni in roleStats) {
+		if (uni.length === 3) {
+			description += `**${uni.toUpperCase()}**: ${roleStats[uni]}\n`;
+		}
+		else {
+			description += `**${uni.capitaliseFirst()}**: ${roleStats[uni]}\n`;
+		}
+	}
+	embed.setDescription(description);
+	return embed;
+}
+
+let statsMessages = JSON.parse(fs.readFileSync("./stats_messages.json"));
+
+/**
  * Updates the server role stats in the stats channel
  */
 async function updateStats() {
@@ -100,33 +125,26 @@ async function updateStats() {
 		if (statsChannel == null) {
 			return log.log("Stats channel not found. Pls fix!");
 		}
-	
-		const messages = await statsChannel.messages.fetch();
-		const message = messages.find(m => {
-			return m.embeds.length === 1 && m.embeds[0].title === settings.statsTitle
-		});
-	
-		const roleStats = await utils.getRoleStats(client);
-	
-		let embed = new Discord.MessageEmbed()
-		.setTitle(settings.statsTitle)
-		.setColor(settings.uniColours.other);
-		let description = "";
-		for (const uni in roleStats) {
-			if (uni.length === 3) {
-				description += `**${uni.toUpperCase()}**: ${roleStats[uni]}\n`;
-			}
-			else {
-				description += `**${uni.capitaliseFirst()}**: ${roleStats[uni]}\n`;
-			}
+
+		const statsEmbed = await generateStatsEmbed();
+
+		if (statsMessages[statsChannel.id] == null) {
+			const id = await statsChannel.send(statsEmbed);
+			statsMessages[statsChannel.id] = id;
+			fs.writeFileSync("./stats_messages.json", JSON.stringify(statsMessages));
+			return log.log(`No stats message found for channel ${statsChannel.name}. Generating new one, id: ${id}`);
 		}
-		embed.setDescription(description);
+	
+		const message = await statsChannel.messages.fetch(statsMessages[statsChannel.id]);
 	
 		if (message == null) {
-			statsChannel.send(embed);
+			const id = await statsChannel.send(statsEmbed);
+			statsMessages[statsChannel.id] = id;
+			fs.writeFileSync("./stats_messages.json", JSON.stringify(statsMessages));
+			log.log(`Stats message for channel ${statsChannel.name} was not found. Generated new one, id: ${id}`);
 		}
 		else {
-			message.edit(embed);
+			message.edit(statsEmbed);
 		}
 	}
 }
