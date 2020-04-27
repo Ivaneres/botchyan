@@ -328,7 +328,7 @@ client.on("messageReactionAdd", async (r, user) => {
 		delete whois[member.id].number;
 		confirm = await r.message.channel.send(`User ${member} verified by ${user.username}! This message will be deleted shortly.`);
 		log.log(`User ${member.user.username} verified by ${user.username}`);
-		member.send(`You have been verified! You now have access to the server.`);
+		member.send(`You have been verified! You now have access to the server. Please use the <#${settings.rolesChannel}> channel to give yourself access to any specific channels you want.`);
 	}
 
 	setTimeout(() => {

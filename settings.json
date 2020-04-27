@@ -34,5 +34,6 @@
     },
     "statsChannels": ["689470116781359104"],
     "statsTitle": "Server stats",
-    "unis": ["ucl", "icl", "kcl", "lse", "other"]
+    "unis": ["ucl", "icl", "kcl", "lse", "other"],
+    "rolesChannel": "689470116781359104"
 }
