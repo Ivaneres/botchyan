@@ -16,7 +16,12 @@ exports.run = (client, message, args, config) => {
         }
 
         const uniRoles = {};
-        // this is an example
+	const guild = client.guilds.resolve(settings.guild);
+	const member = await guild.members.fetch(message.author.id);
+	
+	if (member == null) {
+	    return message.channel.send("You are not a member.");
+	}
 
         for (const roleName in settings.roles) {
             if (settings.unis.includes(roleName.toLowerCase())) {
@@ -29,12 +34,12 @@ exports.run = (client, message, args, config) => {
         }
 
         for (const uni in uniRoles) {
-            if (message.member.roles.cache.has(uniRoles[uni])) {
+            if (member.roles.cache.has(uniRoles[uni])) {
                 whois[message.author.id].university = uni;
             }
         }
 
-        if (message.member.roles.cache.has(settings.roles.senpai)) {
+        if (member.roles.cache.has(settings.roles.senpai)) {
             whois[message.author.id].senpai = true;
         }
         else {

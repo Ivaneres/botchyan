@@ -228,6 +228,8 @@ client.on("message", async (message) => {
 				}
 				// VERIFICATION QUESTIONS TERMINATE HERE
 
+				log.log(`User university: ${whois[message.author.id].university}`);
+
 				// Send new user data to verification channel
 				const embed = new Discord.MessageEmbed()
 					.setTitle(whois[message.author.id].name)
@@ -286,17 +288,17 @@ client.on("messageReactionAdd", async (r, user) => {
 
 	if (member == null) return;
 	if (whois[member.id].rejected) return;
-	if (whois[member.id].verified) return;
+	// if (whois[member.id].verified) return;
 
 	if (whois[member.id] == null) {
-		message.channel.send(`It seems this member has left the server.`);
+		r.message.channel.send(`It seems this member has left the server.`);
 		return r.message.delete();
 	}
 
-	if (whois[member.id].verified) {
-		message.channel.send(`This member is already verified.`);
-		return r.message.delete();
-	};
+	// if (whois[member.id].verified) {
+	//  	  message.channel.send(`This member is already verified.`);
+	//	  return r.message.delete();
+	// };
 
 	let confirm = null;
 
@@ -309,6 +311,9 @@ client.on("messageReactionAdd", async (r, user) => {
 	else {
 		const roleID = settings.roles[whois[member.id].university.toLowerCase()];
 		const role = await r.message.guild.roles.fetch(roleID);
+
+		log.log(`${member.user.username} has uni ${whois[member.id].university} stored in DB. Adding role ${role.name}`);
+
 		if (role == null) {
 			r.message.channel.send(`Role for ${whois[member.id].university} is not set correctly.`);
 			return log.log(`Role for ${whois[member.id].university} does not exit. FIX NOW!`);
@@ -316,7 +321,7 @@ client.on("messageReactionAdd", async (r, user) => {
 
 		member.roles.add(role);
 		if (whois[member.id].senpai) {
-			const senpaiRole = r.message.guild.roles.get(settings.roles.senpai);
+			const senpaiRole = await r.message.guild.roles.fetch(settings.roles.senpai);
 			if (senpaiRole == null) {
 				r.message.channel.send(`Senpai role is not set correctly.`);
 				return log.log("Senpai role does not exist. FIX NOW!");

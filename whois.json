@@ -41,12 +41,6 @@
         "name": "I'm testt",
         "photo": "https://cdn.discordapp.com/attachments/691081691502084096/691081814231613480/IMG_20200318_093513.jpg"
     },
-    "620279211696979969": {
-        "verified": true,
-        "university": "UCL",
-        "name": "Meliza",
-        "senpai": false
-    },
     "321758896131932160": {
         "senpai": false,
         "verified": true,
@@ -109,17 +103,11 @@
         "university": "ICL",
         "name": "Ivan"
     },
-    "269571735328653322": {
-        "verified": true,
-        "university": "ICL",
-        "name": "Elizabeth Chan",
-        "senpai": false
-    },
     "191948412650913802": {
         "university": "icl",
         "senpai": false,
         "verified": true,
-        "name": "Ivan Ereshchenko"
+        "name": "Ivan The Terrible"
     },
     "572301609305112596": {
         "verified": false
@@ -135,5 +123,51 @@
         "senpai": false,
         "verified": true,
         "name": "Deniz"
+    },
+    "229205506693005312": {
+        "university": "icl",
+        "senpai": false,
+        "verified": true,
+        "name": "A̴͗̈z̵̏̕a̸͊̄t̸̄͂h̵̃̔o̸̅̋t̵͌̓h̵͊̈́"
+    },
+    "241292253396467713": {
+        "verified": true,
+        "university": "ucl",
+        "name": "Sam Pham",
+        "senpai": false
+    },
+    "336762814704123915": {
+        "verified": true,
+        "university": "other",
+        "name": "Lucas Lei",
+        "senpai": false
+    },
+    "269571735328653322": {
+        "verified": true,
+        "university": "ICL",
+        "name": "Elizabeth Chan",
+        "senpai": false
+    },
+    "181521279768199168": {
+        "verified": false,
+        "university": "ICL"
+    },
+    "190807371491049474": {
+        "verified": true,
+        "university": "other",
+        "name": "Yang-Jian Zhou",
+        "senpai": false
+    },
+    "323878317079920641": {
+        "university": "other",
+        "senpai": false,
+        "verified": true,
+        "name": "Ppickles"
+    },
+    "201403206297714690": {
+        "university": "ucl",
+        "senpai": false,
+        "verified": true,
+        "name": "Shintaro Nishijo"
     }
 }
