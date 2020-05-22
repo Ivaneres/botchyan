@@ -169,5 +169,31 @@
         "senpai": false,
         "verified": true,
         "name": "Shintaro Nishijo"
+    },
+    "377512599417520129": {
+        "verified": true,
+        "university": "UCL",
+        "name": "Yu Pan",
+        "senpai": false
+    },
+    "709430151502364795": {
+        "verified": true,
+        "university": "UCL",
+        "name": "Shuwei Lyu",
+        "senpai": false
+    },
+    "261121269947301888": {
+        "verified": false,
+        "university": "UCL",
+        "name": "Umeesh"
+    },
+    "682307994100433012": {
+        "verified": true,
+        "university": "UCL",
+        "name": "Rudraa",
+        "senpai": false
+    },
+    "224415693393625088": {
+        "verified": false
     }
 }
