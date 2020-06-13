@@ -195,5 +195,19 @@
     },
     "224415693393625088": {
         "verified": false
+    },
+    "191949498828849154": {
+        "verified": false
+    },
+    "318758733952057345": {
+        "verified": true,
+        "university": "Other",
+        "name": "Andrew",
+        "senpai": false
+    },
+    "383933804944949249": {
+        "verified": false,
+        "university": "ucl",
+        "name": "Mustafa Saleem"
     }
 }
