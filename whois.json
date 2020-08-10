@@ -29,12 +29,6 @@
         "verified": true,
         "name": "Jason Guangxia Xu"
     },
-    "391986999332044800": {
-        "university": "icl",
-        "senpai": false,
-        "verified": true,
-        "name": "Sreekar Somayajula"
-    },
     "674279845634768917": {
         "verified": false,
         "university": "ICL",
@@ -93,11 +87,6 @@
         "verified": true,
         "name": "Greta To"
     },
-    "376439498743087116": {
-        "verified": false,
-        "university": "UCL",
-        "name": "Jude"
-    },
     "291628553940762625": {
         "verified": false,
         "university": "ICL",
@@ -140,12 +129,6 @@
         "verified": true,
         "university": "other",
         "name": "Lucas Lei",
-        "senpai": false
-    },
-    "269571735328653322": {
-        "verified": true,
-        "university": "ICL",
-        "name": "Elizabeth Chan",
         "senpai": false
     },
     "181521279768199168": {
@@ -209,5 +192,52 @@
         "verified": false,
         "university": "ucl",
         "name": "Mustafa Saleem"
+    },
+    "694338439952465981": {
+        "verified": true,
+        "university": "UCL",
+        "name": "Charlie Rogers",
+        "senpai": false
+    },
+    "271614805725413376": {
+        "verified": true,
+        "university": "ICL",
+        "name": "Lok Man Yuen",
+        "senpai": false
+    },
+    "355429260543918080": {
+        "verified": true,
+        "university": "LSE",
+        "name": "jack",
+        "senpai": false
+    },
+    "81788112241438720": {
+        "verified": true,
+        "university": "UCL",
+        "name": "Jin",
+        "senpai": false
+    },
+    "188722692957011970": {
+        "verified": true,
+        "university": "UCL",
+        "name": "Ruohan Liu",
+        "senpai": false
+    },
+    "235043129072287745": {
+        "verified": false,
+        "university": "ucl",
+        "name": "louisa norton"
+    },
+    "240187551007113228": {
+        "verified": true,
+        "university": "UCL",
+        "name": "Georg Dosse",
+        "senpai": false
+    },
+    "391986999332044800": {
+        "verified": true,
+        "university": "ICL",
+        "name": "Sreekar Somayajula",
+        "senpai": false
     }
 }
