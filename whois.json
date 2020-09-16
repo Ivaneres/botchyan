@@ -179,9 +179,6 @@
     "224415693393625088": {
         "verified": false
     },
-    "191949498828849154": {
-        "verified": false
-    },
     "318758733952057345": {
         "verified": true,
         "university": "Other",
@@ -239,5 +236,115 @@
         "university": "ICL",
         "name": "Sreekar Somayajula",
         "senpai": false
+    },
+    "186446242866397184": {
+        "verified": true,
+        "university": "LSE",
+        "name": "Rafay Butt",
+        "senpai": false
+    },
+    "350989516330500096": {
+        "verified": true,
+        "university": "ICL",
+        "name": "Fangru Shao",
+        "senpai": false
+    },
+    "191949498828849154": {
+        "verified": true,
+        "university": "KCL",
+        "name": "Samuele",
+        "senpai": false
+    },
+    "148547760885334017": {
+        "verified": false
+    },
+    "250620962234564608": {
+        "verified": true,
+        "university": "UCL",
+        "name": "Werner Müller Roa",
+        "senpai": false
+    },
+    "278956315575844865": {
+        "verified": true,
+        "university": "UCL",
+        "name": "Deniz",
+        "senpai": false
+    },
+    "433618336891535371": {
+        "verified": true,
+        "university": "Ucl",
+        "name": "Misna",
+        "senpai": false
+    },
+    "519591809211432960": {
+        "verified": true,
+        "university": "UCL",
+        "name": "Lola Llera Palomino",
+        "senpai": false
+    },
+    "275521478789693440": {
+        "verified": true,
+        "university": "lse",
+        "name": "niggeru yemeteu",
+        "senpai": false
+    },
+    "751891384952160277": {
+        "verified": true,
+        "university": "UCL",
+        "name": "Nathaniel",
+        "senpai": false
+    },
+    "371017657211813888": {
+        "verified": false,
+        "university": "KCL",
+        "name": "no thanks bruh"
+    },
+    "180810176004096001": {
+        "verified": true,
+        "university": "ICL",
+        "name": "Daniel Simols",
+        "senpai": false
+    },
+    "224115733611675648": {
+        "verified": true,
+        "university": "ICL",
+        "name": "Thaarukan",
+        "senpai": false
+    },
+    "222337993535389696": {
+        "verified": true,
+        "university": "Other",
+        "name": "QMUL",
+        "senpai": false
+    },
+    "234035656530198528": {
+        "verified": true,
+        "university": "other",
+        "name": "Arjan Sudra",
+        "senpai": false
+    },
+    "472155609760792588": {
+        "verified": false
+    },
+    "157981889955758080": {
+        "verified": false,
+        "university": "Other",
+        "name": "Thujaan"
+    },
+    "234383109775294474": {
+        "verified": true,
+        "university": "other",
+        "name": "Jing",
+        "senpai": false
+    },
+    "214158583305207809": {
+        "verified": false,
+        "university": "other",
+        "name": "Omar"
+    },
+    "547730439326924800": {
+        "verified": false,
+        "university": "kcl",
+        "name": "ria"
     }
 }
