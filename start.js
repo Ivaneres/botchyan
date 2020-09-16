@@ -42,7 +42,7 @@ function checkMessageValidity(message, stage) {
 	switch (stage) {
 		case 0:
 			return {
-				"isValid": settings.unis.indexOf(message.content.toLowerCase()) !== -1,
+				"isValid": Object.keys(settings.uniColours).indexOf(message.content.toLowerCase()) !== -1,
 				"error": "Invalid university name. "
 			}
 		case 2:
@@ -77,7 +77,7 @@ function storeWhoisData(message, stage, whoisDB) {
 		whoisDB[message.author.id].photo = message.attachments.first().url;
 	}
 	else {
-		whoisDB[message.author.id][stageMap[stage]] = message.content;
+		whoisDB[message.author.id][stageMap[stage]] = message.content.toUpperCase();
 	}
 }
 
@@ -335,6 +335,8 @@ client.on("messageReactionAdd", async (r, user) => {
 		log.log(`User ${member.user.username} verified by ${user.username}`);
 		member.send(`You have been verified! You now have access to the server. Please use the <#${settings.rolesChannel}> channel to give yourself access to any specific channels you want.`);
 	}
+
+	r.message.reactions.removeAll();
 
 	setTimeout(() => {
 		confirm.delete();

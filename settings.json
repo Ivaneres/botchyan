@@ -1,7 +1,7 @@
 {
     "cmdkey": "!",
     "helloMessages": [
-        "Hello, <user>! Please enter your university below (UCL/ICL/KCL/LSE/other)",
+        "Hello, <user>! Please enter your university below (UCL/ICL/KCL/LSE/QM/other)",
         "Thanks! Please enter your real name:",
         "Please upload a picture of your uni ID:",
         "Please type your uni ID number:",
@@ -15,6 +15,7 @@
         "icl": "672949644552044575",
         "kcl": "672949642375462927",
         "lse": "672949641507110933",
+        "qm": "755837937899536474",
         "other": "672949640571781140",
         "senpai": "672977644471582723",
         "artist": "674044355060957194",
@@ -30,10 +31,10 @@
         "icl": "0x003E74",
         "kcl": "0xe01c1d",
         "lse": "0xed1c2e",
+        "qm": "0xe29bc0",
         "other": "0x49b6f5"
     },
     "statsChannels": ["689470116781359104"],
     "statsTitle": "Server stats",
-    "unis": ["ucl", "icl", "kcl", "lse", "other"],
     "rolesChannel": "689470116781359104"
 }
