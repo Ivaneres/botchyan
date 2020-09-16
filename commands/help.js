@@ -4,7 +4,7 @@ const settings = require("../settings.json");
 
 exports.run = (client, message, args, config) => {
     return new Promise((resolve, reject) => {
-        const formattedUnis = settings.unis.map(i => {
+        const formattedUnis = Object.keys(settings.uniColours).map(i => {
             if (i.length === 3) return i.toUpperCase();
             return i;
         });

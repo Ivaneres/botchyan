@@ -45,7 +45,7 @@ exports.run = (client, message, args, config) => {
         const uniRoles = {};
 
         for (const roleName in settings.roles) {
-            if (settings.unis.includes(roleName.toLowerCase())) {
+            if (Object.keys(settings.uniColours).includes(roleName.toLowerCase())) {
                 uniRoles[roleName] = settings.roles[roleName];
             }
         }
