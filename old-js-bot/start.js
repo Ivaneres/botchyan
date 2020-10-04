@@ -261,7 +261,7 @@ client.on("message", async (message) => {
     const command = args.shift().toLowerCase();
 
     try {
-        let commandFile = require(`./commands/${command}.js`);
+        let commandFile = require(`./old-js-bot/commands`);
         if (!commandFile) return;
         commandFile.run(client, message, args, settings).then((success) => {
             log.log(`${command}: ` + success);
